@@ -24,6 +24,10 @@ class Ball(pygame.sprite.Sprite):
             self.y_velocity *= -1
 
     def collisionWithPaddles(self, paddleRight, paddleLeft):
-        if(self.rect.x > paddleLeft.rect.x - 15):
-            #if(self.rect.y > paddleLeft.rect.y and self.rect.y < paddleLeft.rect.y + 80):
-            self.x_velocity *= -1
+        if(self.rect.x + 30 > paddleRight.rect.x):
+            if(self.rect.y > paddleRight.rect.y and self.rect.y - 30 < paddleRight.rect.y + 80):
+                self.x_velocity *= -1
+        
+        elif(self.rect.x < paddleLeft.rect.x + 15):
+            if(self.rect.y > paddleLeft.rect.y and self.rect.y - 30 < paddleLeft.rect.y + 80):
+                self.x_velocity *= -1

@@ -38,7 +38,7 @@ class Game:
             # Update and draw all sprites
             self.all_sprites_list.update()
             self.all_sprites_list.draw(self.screen)
-            self.ball.collisionWithPaddles(self.player_one, self.player_two)
+            self.ball.collisionWithPaddles(self.player_two, self.player_one)
 
             self.clock.tick(60)            
             pygame.display.update()
