@@ -4,7 +4,11 @@ class Paddle(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = pygame.Surface((15,80))
+        self.width = 15
+        self.height = 80
+
+        self.image = pygame.Surface((self.width,self.height))
+        self.image.fill((255,255,255))
         self.rect = self.image.get_rect()
 
         self.rect.x = x
@@ -15,6 +19,13 @@ class Paddle(pygame.sprite.Sprite):
 
     def update(self):
         self.rect.y += self.change_y * self.velocity
+        self.oobCheck()
+
+    def oobCheck(self):
+        if(self.rect.y < 0):
+            self.rect.y = 0
+        if(self.rect.y > 600 - self.height):
+            self.rect.y = 600 - self.height
 
     def getInput(self, event, up_key, down_key):
         if(event.type == pygame.KEYDOWN):
